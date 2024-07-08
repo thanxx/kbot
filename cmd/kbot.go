@@ -29,7 +29,7 @@ to quickly create a Cobra application.`,
 		fmt.Printf("kbot %s\n", appVersion)
 		pref := tele.Settings{
 			URL: "",
-			Token:  os.Getenv("TOKEN"),
+			Token:  os.Getenv("TELETOKEN"),
 			Poller: &tele.LongPoller{Timeout: 10 * time.Second},
 		}
 	
