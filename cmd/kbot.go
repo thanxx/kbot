@@ -1,6 +1,5 @@
 /*
 Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
@@ -10,15 +9,15 @@ import (
 	"os"
 	"time"
 
-	tele "gopkg.in/telebot.v3"
 	"github.com/spf13/cobra"
+	tele "gopkg.in/telebot.v3"
 )
 
 // kbotCmd represents the kbot command
 var kbotCmd = &cobra.Command{
-	Use:   "kbot",
+	Use:     "kbot",
 	Aliases: []string{"start"},
-	Short: "A brief description of your command",
+	Short:   "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -28,22 +27,21 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("kbot %s\n", appVersion)
 		pref := tele.Settings{
-			URL: "",
+			URL:    "",
 			Token:  os.Getenv("TELE_TOKEN"),
 			Poller: &tele.LongPoller{Timeout: 10 * time.Second},
 		}
-	
+
 		b, err := tele.NewBot(pref)
 		if err != nil {
 			log.Fatal(err)
 			return
 		}
-	
 
 		b.Handle(tele.OnText, func(m tele.Context) error {
 			log.Print(m.Message().Payload, m.Text())
 			log.Printf("hello, i'm kbot %s!\n", appVersion)
-			payload:=m.Text()
+			payload := m.Text()
 
 			switch payload {
 			case "hello":
@@ -51,7 +49,6 @@ to quickly create a Cobra application.`,
 			}
 			return err
 		})
-
 
 		b.Start()
 	},
