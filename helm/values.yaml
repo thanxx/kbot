@@ -1,0 +1,8 @@
+image:
+  repository: thanxx
+  tag: v0.0.1-ce2649f
+  arch: amd64
+secret:
+  name: "kbot"
+  env: "TELE_TOKEN"
+  key: "token"
