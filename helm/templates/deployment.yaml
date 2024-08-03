@@ -24,11 +24,11 @@ spec:
         - name: {{ .Release.Name }}
           image: {{ .Values.image.repository }}/{{ .Chart.Name }}:{{ .Values.image.tag }}-{{ .Values.image.arch | default "amd64"}}
           env:
-          - name: {{ .Values.secret.env }}
+          - name: "TELE_TOKEN"
             valueFrom:
               secretKeyRef:
-                key: {{ .Values.secret.key }}
-                name: {{ .Values.secret.name }}
+                key: token
+                name: teletoken
 
       {{- with .Values.volumes }}
       volumes:
