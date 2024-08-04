@@ -1,9 +1,9 @@
 APP=$(shell basename $(shell git remote get-url origin))
-REGISTRY=thanxx
+REGISTRY=ghcr.io/thanxx
 VERSION=$(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 TARGETOS=linux
 TARGETARCH=amd64
-TAG=${REGISTRY}/${APP}:${VERSION}-${TARGETARCH}
+TAG=${REGISTRY}/${APP}:${VERSION}-${TARGETOS}-${TARGETARCH}
 
 format:
 	gofmt -s -w ./

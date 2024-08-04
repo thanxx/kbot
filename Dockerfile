@@ -1,8 +1,8 @@
 FROM golang as builder
+LABEL org.opencontainers.image.source="https://github.com/thanxx/kbot"
 WORKDIR /go/src/app
 COPY . .
 RUN make build
-
 FROM scratch
 WORKDIR /
 COPY --from=builder /go/src/app/kbot .
