@@ -1,5 +1,5 @@
 FROM golang as builder
-LABEL org.opencontainers.image.source="https://github.com/thanxx/kbot"
+LABEL org.opencontainers.image.source="https://ghcr.io/thanxx/kbot"
 WORKDIR /go/src/app
 COPY . .
 RUN make build
