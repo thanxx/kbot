@@ -1,5 +1,7 @@
 image:
-  repository: thanxx
+  registry: ghcr.io
+  repository: thanxx/kbot
   tag: v0.0.1-967f7bc
   arch: amd64
+  os: linux
 token: ""
